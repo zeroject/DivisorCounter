@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_TOKEN = credentials('')
+        GITHUB_TOKEN = credentials('github-token')
         TAG_NAME = 'v1.0.0'
         RELEASE_TITLE = 'Release v1.0.0'
         RELEASE_BODY = 'Release notes for v1.0.0'
