@@ -18,7 +18,7 @@ pipeline {
         stage('Release') {
             steps {
                 script {
-                    bat "gh release create ${TAG_NAME} -t '${RELEASE_TITLE}' -n '${RELEASE_BODY}'"
+                    bat "curl -X POST -H 'Authorization: token ${GITHUB_TOKEN}' -H 'Content-Type: application/json' https://api.github.com/repos/DivisorCounter/releases -d '{\"tag_name\": \"v1.0.0\", \"name\": \"Release v1.0.0\", \"body\": \"${RELEASE_BODY}\"}'"
                 }
             }
         }
