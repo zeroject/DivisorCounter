@@ -18,7 +18,13 @@ pipeline {
         stage('Release') {
             steps {
                 script {
-                    bat "curl -X POST -H 'Authorization: token ${GITHUB_TOKEN}' -H 'Content-Type: application/json' https://api.github.com/repos/${GITHUB_REPO}/releases -d '{\"tag_name\": \"v1.0.0\", \"name\": \"Release v1.0.0\", \"body\": \"test\"}'"
+                    bat """
+                        echo "Exporting token and enterprise API to enable github-release tool"
+                        export GITHUB_TOKEN=${GITHUB_TOKEN}
+
+                        echo "Creating a new release in GitHub"
+                        github-release release --repo ${https://github.com/zeroject/DivisorCounter} --tag ${v.1.0.0} --name "${test}"
+                    """
                 }
             }
         }
