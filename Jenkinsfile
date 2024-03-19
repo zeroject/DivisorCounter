@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project (e.g., compile code, run tests)
-                sh 'dotnet build' // Example for Maven project, adjust for your build tool
+                bat 'dotnet build' // Example for Maven project, adjust for your build tool
             }
         }
     }
